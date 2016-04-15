@@ -15,6 +15,7 @@ then
 	ModelUtils.addNewQuestionId("qns-1");
 	ModelUtils.addNewQuestionId("qns-2");
 	ModelUtils.addNewQuestionId("qns-3");
+	ModelUtils.addNewQuestionId("qns-4");
 	
 	
 end
