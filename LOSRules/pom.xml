@@ -7,6 +7,13 @@
   <version>1.0</version>
   <name>LOSRules</name>
   <description>Rules for Loan Originating System.</description>
+  <dependencies>
+    <dependency>
+      <groupId>com.myorg</groupId>
+      <artifactId>LOSModel</artifactId>
+      <version>1.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
