@@ -1,10 +1,10 @@
 package com.myorg.losrules;
 
-import com.myorg.losservices.model.Answer;
-import com.myorg.losservices.model.UserInfo;
+import com.myorg.losmodel.model.Answer;
+import com.myorg.losmodel.model.UserInfo;
 import java.util.List;
 import java.util.ArrayList;
-import com.myorg.losservices.util.QNSUtil
+import com.myorg.losmodel.util.ModelUtils
 
 rule "get_initial_qns_list_pb"
 when
@@ -12,9 +12,9 @@ when
 then
 	System.out.println( "User Lob: " +  $userInfo.getLob());	
 	
-	QNSUtil.addNewQuestionId("qns-1");
-	QNSUtil.addNewQuestionId("qns-2");
-	QNSUtil.addNewQuestionId("qns-3");
+	ModelUtils.addNewQuestionId("qns-1");
+	ModelUtils.addNewQuestionId("qns-2");
+	ModelUtils.addNewQuestionId("qns-3");
 	
 	
 end
@@ -25,8 +25,8 @@ when
 then
 	System.out.println( "User Lob: " +  $userInfo.getLob());	
 	
-	QNSUtil.addNewQuestionId("qns-1");	
-	QNSUtil.addNewQuestionId("qns-3");	
+	ModelUtils.addNewQuestionId("qns-1");	
+	ModelUtils.addNewQuestionId("qns-3");	
 	
 end
 
@@ -34,7 +34,7 @@ rule "show_ans4"
 when 
 	ans : Answer( ansId == "ans-11")
 then
-	QNSUtil.addNewQuestionId("qns-4");
+	ModelUtils.addNewQuestionId("qns-4");
 end	
 				
 
