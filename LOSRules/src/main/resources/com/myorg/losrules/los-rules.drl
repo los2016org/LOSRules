@@ -1,2 +1,57 @@
 package com.myorg.losrules;
 
+import com.myorg.losmodel.model.client.PBEntityClient
+import com.myorg.losmodel.model.client.PBIndividualClient
+import com.myorg.losmodel.util.ModelUtils;
+
+rule "upload entity documentation"
+when
+    PBEntityClient();
+then
+    System.out.println("Client is an Entity");
+    
+    ModelUtils.addQnsIdToEnableList("qns-3");
+    
+end
+
+rule "get employment details"
+when
+    $indvl : PBIndividualClient(employerName != null);
+then 
+    System.out.println("Client is Employed");
+    ModelUtils.addQnsIdToEnableList("qns-11");
+    ModelUtils.addQnsIdToEnableList("qns-12");
+    ModelUtils.addQnsIdToEnableList("qns-13");
+    ModelUtils.addQnsIdToEnableList("qns-14");
+    ModelUtils.addQnsIdToEnableList("qns-15");
+end
+
+rule "marital status"
+when 
+    $indvl : PBIndividualClient(martialStatus == "Divorced");
+then 
+    System.out.println("Client is Divorced");
+    ModelUtils.addQnsIdToEnableList("qns-17");
+    ModelUtils.addQnsIdToEnableList("qns-19");
+    
+end
+
+rule "Obligated to pay alimony, child support, or separate maintenance"
+when
+    $indvl : PBIndividualClient(obligationToSupport == "Y");
+then
+    System.out.println("Client is Obligated to pay alimony, child support, or separate maintenance");
+    ModelUtils.addQnsIdToEnableList("qns-18");
+    ModelUtils.addQnsIdToDisableList("qns-19");
+end
+
+rule "Income derived from child support, alimony or separate maintenance"
+when    
+    $indvl : PBIndividualClient(divorceIncomeFlag == "Y");
+then 
+    System.out.println("Client Income derived from child support, alimony or separate maintenance");
+    ModelUtils.addQnsIdToEnableList("qns-25");
+    ModelUtils.addQnsIdToDisableList("qns-22");
+end
+
+    
