@@ -1,2 +1,20 @@
 package com.myorg.losrules.q10000;
 
+import com.myorg.losmodel.model.ValidateQuestionRequest;
+import com.myorg.losmodel.model.client.PBEntityClient;
+import com.myorg.losmodel.model.client.PBIndividualClient;
+import com.myorg.losmodel.util.ModelUtils;
+
+rule "get employment details"
+when
+    ValidateQuestionRequest(questionId == 10000);
+    ValidateQuestionRequest(mortgageApplication.individualClient.employerName != null);
+then 
+    System.out.println("Client is Employed");
+    ModelUtils.addQnsIdToEnableList(11000);
+    ModelUtils.addQnsIdToEnableList(12000);
+    ModelUtils.addQnsIdToEnableList(13000);
+    ModelUtils.addQnsIdToEnableList(14000);
+    ModelUtils.addQnsIdToEnableList(15000);
+end
+
