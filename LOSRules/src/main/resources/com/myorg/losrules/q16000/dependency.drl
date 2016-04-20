@@ -7,7 +7,7 @@ import com.myorg.losmodel.util.ModelUtils;
 
 rule "marital status"
 when 
-    ValidateQuestionRequest(questionId == 16000 &&
+    ValidateQuestionRequest(/*questionId == 16000 &&*/
         mortgageApplication.individualClient != null);
     
 then 
