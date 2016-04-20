@@ -14,7 +14,7 @@ then
     
 end
 
-rule "get employment details"
+rule "get employment details" @Eager @department('sales')
 when
     $indvl : PBIndividualClient(employerName != null);
 then 
