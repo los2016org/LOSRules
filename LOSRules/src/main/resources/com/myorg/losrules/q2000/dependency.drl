@@ -1,2 +1,19 @@
 package com.myorg.losrules.q2000;
 
+import com.myorg.losmodel.model.ValidateQuestionRequest;
+import com.myorg.losmodel.model.client.PBEntityClient;
+import com.myorg.losmodel.model.client.PBIndividualClient;
+import com.myorg.losmodel.util.ModelUtils;
+
+
+rule "upload entity documentation"
+when
+    ValidateQuestionRequest(questionId == 2000);
+    ValidateQuestionRequest(mortgageApplication.entityClient != null);
+then
+    System.out.println("Client is an Entity");
+    
+    ModelUtils.addQnsIdToEnableList("qns-3");
+    
+end
+
