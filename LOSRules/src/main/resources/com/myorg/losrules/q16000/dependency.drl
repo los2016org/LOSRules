@@ -9,7 +9,7 @@ import com.myorg.losmodel.util.ModelUtils;
 rule "marital status"
 when 
     ValidateQuestionRequest(questionId == 16000
-        /*mortgageApplication.individualClient.martialStatus == "Divorced"*/);
+        mortgageApplication.individualClient.martialStatus == "Divorced");
     
 then 
     System.out.println("Client is Divorced");
