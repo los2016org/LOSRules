@@ -1,2 +1,17 @@
 package com.myorg.losrules;
 
+import com.myorg.losmodel.model.ValidateQuestionRequest;
+
+rule "One"
+when 
+    ValidateQuestionRequest(questionId == 10000);
+then 
+    System.out.println("Rule One");
+end
+
+rule "Two"
+when 
+    ValidateQuestionRequest(questionId == 16000);
+then 
+    System.out.println("Rule Two");
+end
