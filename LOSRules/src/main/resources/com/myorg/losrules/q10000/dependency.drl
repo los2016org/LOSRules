@@ -7,7 +7,7 @@ import com.myorg.losmodel.util.ModelUtils;
 
 rule "get employment details"
 when
-    ValidateQuestionRequest(questionId == 10000 &&
+   ValidateQuestionRequest(questionId == 10000, 
         mortgageApplication.individualClient.employerName != null);
     
 then 
