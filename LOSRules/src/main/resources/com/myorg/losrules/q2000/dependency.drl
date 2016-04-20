@@ -1,2 +1,16 @@
 package com.myorg.losrules.q2000;
 
+import com.myorg.losmodel.model.client.PBEntityClient
+import com.myorg.losmodel.model.client.PBIndividualClient
+import com.myorg.losmodel.util.ModelUtils;
+
+rule "upload entity documentation"
+when
+    PBEntityClient();
+then
+    System.out.println("Client is an Entity");
+    
+    ModelUtils.addQnsIdToEnableList(3000);
+    
+end
+
