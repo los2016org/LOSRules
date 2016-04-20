@@ -5,6 +5,7 @@ import com.myorg.losmodel.model.client.PBEntityClient;
 import com.myorg.losmodel.model.client.PBIndividualClient;
 import com.myorg.losmodel.util.ModelUtils;
 
+/*
 rule "marital status"
 when 
     ValidateQuestionRequest(questionId == 16000 &&
@@ -15,4 +16,4 @@ then
     ModelUtils.addQnsIdToEnableList(17000);
     ModelUtils.addQnsIdToEnableList(19000);
 end
-
+*/
