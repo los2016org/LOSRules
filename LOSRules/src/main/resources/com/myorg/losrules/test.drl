@@ -9,11 +9,10 @@ then
     System.out.println("Rule One");
 end
 
-/*
+
 rule "Two"
 when 
     ValidateQuestionRequest(questionId.intValue() > 16000  );
 then 
     System.out.println("Rule Two");
 end
-*/
