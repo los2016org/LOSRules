@@ -13,7 +13,7 @@ when
 then
     System.out.println("Client is an Entity");
     
-    ModelUtils.addQnsIdToEnableList("qns-3");
+    ModelUtils.addQnsIdToEnableList(3000);
     
 end
 
