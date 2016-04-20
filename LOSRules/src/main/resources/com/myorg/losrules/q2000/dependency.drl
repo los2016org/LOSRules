@@ -8,7 +8,7 @@ import com.myorg.losmodel.util.ModelUtils;
 
 rule "upload entity documentation"
 when
-    ValidateQuestionRequest(questionId == 2000 && mortgageApplication.entityClient != null);
+    ValidateQuestionRequest(questionId == 2000, mortgageApplication.entityClient != null);
     
 then
     System.out.println("Client is an Entity");
