@@ -6,12 +6,12 @@ import com.myorg.losmodel.model.client.PBIndividualClient;
 import com.myorg.losmodel.util.ModelUtils;
 
 
-rule "get employment details"
+rule "marital status"
 when
     ValidateQuestionRequest(questionId == 16000);
     ValidateQuestionRequest(mortgageApplication.individualClient.martialStatus == "Divorced");
 then 
-    System.out.println("Client is Employed");
+    System.out.println("Client is Divorced");
     ModelUtils.addQnsIdToEnableList(17000);
     ModelUtils.addQnsIdToEnableList(19000);
     
