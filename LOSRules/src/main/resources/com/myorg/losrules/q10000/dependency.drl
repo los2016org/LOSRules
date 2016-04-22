@@ -4,6 +4,9 @@ import com.myorg.losmodel.model.ValidateQuestionRequest;
 import com.myorg.losmodel.model.client.PBEntityClient;
 import com.myorg.losmodel.model.client.PBIndividualClient;
 import com.myorg.losmodel.util.ModelUtils;
+import org.slf4j.Logger;
+
+global Logger logger;
 
 rule "get employment details"
 when
@@ -11,7 +14,7 @@ when
         mortgageApplication.individualClient.employerName != null);
     
 then 
-    System.out.println("Client is Employed");
+    logger.info("Client is Employed");
     ModelUtils.addQnsIdToEnableList(11000);
     ModelUtils.addQnsIdToEnableList(12000);
     ModelUtils.addQnsIdToEnableList(13000);
