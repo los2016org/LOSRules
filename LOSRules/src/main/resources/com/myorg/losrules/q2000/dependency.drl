@@ -16,3 +16,14 @@ then
     
 end
 
+
+rule "Disable upload entity documentation"
+when
+    ValidateQuestionRequest(questionId == 2000, mortgageApplication.individualClient != null);
+    
+then
+    System.out.println("Client is an Entity");
+    
+    ModelUtils.addQnsIdToDisableList(3000);
+    
+end
