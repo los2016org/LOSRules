@@ -6,7 +6,7 @@ import com.myorg.losmodel.model.client.PBIndividualClient;
 import com.myorg.losmodel.util.ModelUtils;
 
 
-rule "marital status"
+rule "marital status Divorced"
 when 
     ValidateQuestionRequest(questionId == 16000,
         mortgageApplication.individualClient.martialStatus == "Divorced");
@@ -15,6 +15,16 @@ then
     System.out.println("Client is Divorced");
     ModelUtils.addQnsIdToEnableList(17000);
     ModelUtils.addQnsIdToEnableList(19000);
+end
+
+rule "marital status Married"
+when 
+    ValidateQuestionRequest(questionId == 16000,
+        mortgageApplication.individualClient.martialStatus == "Married");
+    
+then 
+    System.out.println("Client is Divorced");
+    ModelUtils.addQnsIdToEnableList(21000);
 end
 
 
