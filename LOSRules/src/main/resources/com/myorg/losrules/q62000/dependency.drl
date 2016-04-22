@@ -1,2 +1,18 @@
 package com.myorg.losrules.q62000;
 
+import com.myorg.losmodel.model.ValidateQuestionRequest;
+import com.myorg.losmodel.model.client.PBEntityClient;
+import com.myorg.losmodel.model.client.PBIndividualClient;
+import com.myorg.losmodel.util.ModelUtils;
+
+rule "Ownership interest in a property in the last three years"
+when
+    ValidateQuestionRequest(questionId == 62000,
+        mortgageApplication.entityClient.hadOwnershipInterestinProperty == "Y");
+then
+    System.out.println("");
+    ModelUtils.addQnsIdToEnableList(63000);
+    ModelUtils.addQnsIdToDisableList(64000);
+end
+
+
