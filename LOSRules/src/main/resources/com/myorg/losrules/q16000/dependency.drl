@@ -25,6 +25,10 @@ when
 then 
     System.out.println("Client is Divorced");
     ModelUtils.addQnsIdToEnableList(21000);
+    ModelUtils.addQnsIdToDisableList(17000);
+    ModelUtils.addQnsIdToDisableList(18000);
+    ModelUtils.addQnsIdToDisableList(19000);
+    ModelUtils.addQnsIdToDisableList(20000);
 end
 
 
