@@ -1,2 +1,17 @@
 package com.myorg.losrules.q17000;
 
+import com.myorg.losmodel.model.ValidateQuestionRequest;
+import com.myorg.losmodel.model.client.PBEntityClient;
+import com.myorg.losmodel.model.client.PBIndividualClient;
+import com.myorg.losmodel.util.ModelUtils;
+
+rule "Obligated to pay alimony, child support, or separate maintenance"
+when
+    ValidateQuestionRequest(questionId == 17000,
+        mortgageApplication.individualClient.obligationToSupport == "Y");
+then
+    System.out.println("Client is Obligated to pay alimony, child support, or separate maintenance");
+    ModelUtils.addQnsIdToEnableList(18000);
+    ModelUtils.addQnsIdToDisableList(19000);
+end
+
