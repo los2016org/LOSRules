@@ -13,7 +13,8 @@ when
    ValidateQuestionRequest(questionId == 10000, 
         mortgageApplication.individualClient.employerName != null);
     
-then 
+then
+    System.out.println("logger: " + logger);
     logger.info("Client is Employed");
     ModelUtils.addQnsIdToEnableList(11000);
     ModelUtils.addQnsIdToEnableList(12000);
