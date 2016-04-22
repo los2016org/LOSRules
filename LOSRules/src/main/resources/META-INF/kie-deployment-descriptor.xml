@@ -11,7 +11,7 @@
     <globals>
       <global>
         <resolver>mvel</resolver>
-        <identifier>org.slf4j.LoggerFactory.getLogger("AssetMgmt")</identifier>
+        <identifier>org.slf4j.LoggerFactory.getLogger(QNAServicesImpl.class)</identifier>
         <parameters/>
         <name>logger</name>
       </global>
