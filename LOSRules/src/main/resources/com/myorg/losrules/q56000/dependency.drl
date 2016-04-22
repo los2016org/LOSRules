@@ -1,2 +1,15 @@
 package com.myorg.losrules.q56000;
 
+import com.myorg.losmodel.model.ValidateQuestionRequest;
+import com.myorg.losmodel.model.client.PBEntityClient;
+import com.myorg.losmodel.model.client.PBIndividualClient;
+import com.myorg.losmodel.util.ModelUtils;
+
+rule "Part of the down payment borrowed"
+when
+    ValidateQuestionRequest(questionId == 56000,
+        mortgageApplication.mtgDetails.isLoanUsedForPayoff == "Y");
+then
+    System.out.println("");
+    ModelUtils.addQnsIdToEnableList(57000);
+end
