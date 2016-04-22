@@ -6,6 +6,7 @@ import com.myorg.losmodel.model.client.PBIndividualClient;
 import com.myorg.losmodel.util.ModelUtils;
 
 rule "get employment details"
+    agenda-group "q10000"
 when
    ValidateQuestionRequest(questionId == 10000, 
         mortgageApplication.individualClient.employerName != null);
