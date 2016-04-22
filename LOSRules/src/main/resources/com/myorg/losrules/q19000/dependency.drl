@@ -1,2 +1,17 @@
 package com.myorg.losrules.q19000;
 
+import com.myorg.losmodel.model.client.PBEntityClient;
+import com.myorg.losmodel.model.client.PBIndividualClient;
+import com.myorg.losmodel.model.ValidateQuestionRequest;
+import com.myorg.losmodel.util.ModelUtils;
+
+rule "Income derived from child support, alimony or separate maintenance"
+when    
+    ValidateQuestionRequest(questionId == 19000,
+        mortgageApplication.individualClient.divorceIncomeFlag == "Y");
+then 
+    System.out.println("Client Income derived from child support, alimony or separate maintenance");
+    ModelUtils.addQnsIdToEnableList(20000);
+    ModelUtils.addQnsIdToDisableList(18000);
+end
+
