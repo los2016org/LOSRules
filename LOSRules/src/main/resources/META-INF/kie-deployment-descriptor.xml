@@ -8,7 +8,14 @@
     <marshalling-strategies/>
     <event-listeners/>
     <task-event-listeners/>
-    <globals/>
+    <globals>
+      <global>
+        <resolver>mvel</resolver>
+        <identifier>org.slf4j.LoggerFactory.getLogger("AssetMgmt")</identifier>
+        <parameters/>
+        <name>logger</name>
+      </global>
+    </globals>
     <work-item-handlers/>
     <environment-entries/>
     <configurations/>
