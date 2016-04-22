@@ -1,2 +1,26 @@
 package com.myorg.losrules.q70000;
 
+import com.myorg.losmodel.model.ValidateQuestionRequest;
+import com.myorg.losmodel.model.client.PBEntityClient;
+import com.myorg.losmodel.model.client.PBIndividualClient;
+import com.myorg.losmodel.util.ModelUtils;
+
+rule "you rent or own_Y"
+when
+    ValidateQuestionRequest(questionId == 56000,
+        mortgageApplication.mtgDetails.isLoanUsedForPayoff == "Y");
+then
+    System.out.println("");
+    ModelUtils.addQnsIdToEnableList(71000);
+end
+
+rule "you rent or own_N"
+when
+    ValidateQuestionRequest(questionId == 56000,
+        mortgageApplication.mtgDetails.isLoanUsedForPayoff == "N");
+then
+    System.out.println("");
+    ModelUtils.addQnsIdToDisableList(71000);
+end
+
+
