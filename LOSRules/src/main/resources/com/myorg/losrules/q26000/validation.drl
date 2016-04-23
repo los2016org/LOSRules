@@ -29,12 +29,25 @@ then
     
 end
 
-rule "uniqueIdentifier proper format"
+rule "SSN proper format"
 when 
   $v : ValidateQuestionRequest((questionId == 26000 || questionId == null) &&
         mortgageApplication.entityClient != null &&
         mortgageApplication.entityClient.uniqueIdentifierType == "SSN" &&
         mortgageApplication.entityClient.uniqueIdentifier not matches "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$");
+then
+    System.out.println("uniqueIdentifier is required" + $v.getMortgageApplication().getEntityClient().getUniqueIdentifier());
+    
+    ModelUtils.addMesgToValidationMesgList("error" , "Invalid SSN or not in proper format");
+    
+end
+
+rule "EIN proper format"
+when 
+  $v : ValidateQuestionRequest((questionId == 26000 || questionId == null) &&
+        mortgageApplication.entityClient != null &&
+        mortgageApplication.entityClient.uniqueIdentifierType == "EIN" &&
+        mortgageApplication.entityClient.uniqueIdentifier not matches "^\\d{2}-\\d{7}$");
 then
     System.out.println("uniqueIdentifier is required" + $v.getMortgageApplication().getEntityClient().getUniqueIdentifier());
     
