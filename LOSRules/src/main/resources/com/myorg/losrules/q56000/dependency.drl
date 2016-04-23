@@ -7,8 +7,8 @@ import com.myorg.losmodel.util.ModelUtils;
 
 rule "Part of the down payment borrowed"
 when
-    ValidateQuestionRequest(questionId == 56000,
-        mortgageApplication.mtgDetails.isLoanUsedForPayoff == "Y");
+    ValidateQuestionRequest(questionId == 56000
+       /* mortgageApplication.mtgDetails.isLoanUsedForPayoff == "Y"*/);
 then
     System.out.println("Part of the down payment borrowed");
     ModelUtils.addQnsIdToEnableList(57000);
