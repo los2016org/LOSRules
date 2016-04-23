@@ -37,6 +37,6 @@ when
 then
     System.out.println("uniqueIdentifier is required" + $v.getMortgageApplication().getEntityClient().getUniqueIdentifier());
     
-    ModelUtils.addMesgToValidationMesgList("error" , "Client Identifier cannot be blank");
+    ModelUtils.addMesgToValidationMesgList("error" , "Invalid SSN or not in proper format");
     
 end
