@@ -1,2 +1,18 @@
 package com.myorg.losrules.q26000;
 
+import com.myorg.losmodel.model.ValidateQuestionRequest;
+import com.myorg.losmodel.model.client.PBEntityClient;
+import com.myorg.losmodel.model.client.PBIndividualClient;
+import com.myorg.losmodel.util.ModelUtils;
+
+rule "uniqueIdentifierType is required"
+when 
+    ValidateQuestionRequest(questionId == 26000,
+        mortgageApplication.entityClient.uniqueIdentifierType == null);
+then
+    System.out.println("uniqueIdentifierType is required");
+    
+    ModelUtils.addMesgToValidationMesgList("error" , "Client Identifier cannot be blank");
+    
+end
+
