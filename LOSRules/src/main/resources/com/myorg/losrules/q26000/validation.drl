@@ -32,8 +32,8 @@ end
 rule "uniqueIdentifier proper format"
 when 
   $v : ValidateQuestionRequest((questionId == 26000 || questionId == null) &&
-        mortgageApplication.entityClient != null //&&
-       /* mortgageApplication.entityClient.uniqueIdentifier matches "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$" */);
+        mortgageApplication.entityClient != null &&
+       mortgageApplication.entityClient.uniqueIdentifier matches "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$");
 then
     System.out.println("uniqueIdentifier is required" + $v.getMortgageApplication().getEntityClient().getUniqueIdentifier());
     
