@@ -51,6 +51,6 @@ when
 then
     System.out.println("uniqueIdentifier is required" + $v.getMortgageApplication().getEntityClient().getUniqueIdentifier());
     
-    ModelUtils.addMesgToValidationMesgList("error" , "Invalid SSN or not in proper format");
+    ModelUtils.addMesgToValidationMesgList("error" , "Invalid EIN or not in proper format");
     
 end
