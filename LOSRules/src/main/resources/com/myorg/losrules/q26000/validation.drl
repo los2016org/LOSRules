@@ -13,7 +13,30 @@ when
 then
     System.out.println("uniqueIdentifierType is required");
     
+    ModelUtils.addMesgToValidationMesgList("error" , "Client Identifier Type cannot be blank");
+    
+end
+
+rule "uniqueIdentifier is required"
+when 
+    ValidateQuestionRequest((questionId == 26000 || questionId == null) &&
+        mortgageApplication.entityClient != null &&
+        mortgageApplication.entityClient.uniqueIdentifier == null);
+then
+    System.out.println("uniqueIdentifier is required");
+    
     ModelUtils.addMesgToValidationMesgList("error" , "Client Identifier cannot be blank");
     
 end
 
+rule "uniqueIdentifier proper format"
+when 
+    ValidateQuestionRequest((questionId == 26000 || questionId == null) &&
+        mortgageApplication.entityClient != null &&
+        mortgageApplication.entityClient.uniqueIdentifier matches "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$");
+then
+    System.out.println("uniqueIdentifier is required");
+    
+    ModelUtils.addMesgToValidationMesgList("error" , "Client Identifier cannot be blank");
+    
+end
