@@ -6,6 +6,13 @@
   <artifactId>LOSRules</artifactId>
   <version>1.0</version>
   <name>LOSRules</name>
+  <dependencies>
+    <dependency>
+      <groupId>com.myorg</groupId>
+      <artifactId>LOSModel</artifactId>
+      <version>1.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
