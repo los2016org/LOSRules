@@ -54,3 +54,53 @@ then
     ModelUtils.addMesgToValidationMesgList("error" , "Invalid EIN or not in proper format", 26000);
     
 end
+
+rule "uniqueIdentifierType is required for Individual"
+when 
+    ValidateQuestionRequest((questionId == 26000 || questionId == null) &&
+        mortgageApplication.individualClient != null &&
+        mortgageApplication.individualClient.uniqueIdentifierType == null);
+then
+    System.out.println("uniqueIdentifierType is required");
+    
+    ModelUtils.addMesgToValidationMesgList("error" , "Individual Client Identifier Type cannot be blank", 26000);
+    
+end
+
+rule "uniqueIdentifier is required for Individual"
+when 
+    ValidateQuestionRequest((questionId == 26000 || questionId == null) &&
+        mortgageApplication.individualClient != null &&
+        mortgageApplication.individualClient.uniqueIdentifier == null);
+then
+    System.out.println("uniqueIdentifier is required");
+    
+    ModelUtils.addMesgToValidationMesgList("error" , "Individual Client Identifier cannot be blank", 26000);
+    
+end
+
+rule "SSN proper format For Individual"
+when 
+  $v : ValidateQuestionRequest((questionId == 26000 || questionId == null) &&
+        mortgageApplication.individualClient != null &&
+        mortgageApplication.individualClient.uniqueIdentifierType == "SSN" &&
+        mortgageApplication.individualClient.uniqueIdentifier not matches "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$");
+then
+    System.out.println("uniqueIdentifier is required" + $v.getMortgageApplication().getIndividualClient().getUniqueIdentifier());
+    
+    ModelUtils.addMesgToValidationMesgList("error" , "Invalid Individual Client SSN or not in proper format", 26000);
+    
+end
+
+rule "EIN proper format for Individual"
+when 
+  $v : ValidateQuestionRequest((questionId == 26000 || questionId == null) &&
+        mortgageApplication.individualClient != null &&
+        mortgageApplication.individualClient.uniqueIdentifierType == "EIN" &&
+        mortgageApplication.individualClient.uniqueIdentifier not matches "^\\d{2}-\\d{7}$");
+then
+    System.out.println("uniqueIdentifier is required" + $v.getMortgageApplication().getIndividualClient().getUniqueIdentifier());
+    
+    ModelUtils.addMesgToValidationMesgList("error" , "Invalid Individual Client EIN or not in proper format", 26000);
+    
+end
