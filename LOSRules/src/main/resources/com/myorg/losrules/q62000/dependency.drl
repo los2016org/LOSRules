@@ -5,7 +5,7 @@ import com.myorg.losmodel.model.client.PBEntityClient;
 import com.myorg.losmodel.model.client.PBIndividualClient;
 import com.myorg.losmodel.util.ModelUtils;
 
-rule "Ownership interest in a property in the last three years_Yes"
+rule "Ownership interest in a property in the last three years_Yes_Entity"
 when
     ValidateQuestionRequest(questionId == 62000,
         mortgageApplication.entityClient.hadOwnershipInterestinProperty == "Y");
@@ -15,10 +15,30 @@ then
     ModelUtils.addQnsIdToEnableList(64000);
 end
 
-rule "Ownership interest in a property in the last three years_No"
+rule "Ownership interest in a property in the last three years_No_Entity"
 when
     ValidateQuestionRequest(questionId == 62000,
         mortgageApplication.entityClient.hadOwnershipInterestinProperty == "N");
+then
+    System.out.println("");
+    ModelUtils.addQnsIdToDisableList(63000);
+    ModelUtils.addQnsIdToDisableList(64000);
+end
+
+rule "Ownership interest in a property in the last three years_Yes_Individual"
+when
+    ValidateQuestionRequest(questionId == 62000,
+        mortgageApplication.individualClient.hadOwnershipInterestinProperty == "Y");
+then
+    System.out.println("");
+    ModelUtils.addQnsIdToEnableList(63000);
+    ModelUtils.addQnsIdToEnableList(64000);
+end
+
+rule "Ownership interest in a property in the last three years_No_Individual"
+when
+    ValidateQuestionRequest(questionId == 62000,
+        mortgageApplication.individualClient.hadOwnershipInterestinProperty == "N");
 then
     System.out.println("");
     ModelUtils.addQnsIdToDisableList(63000);
